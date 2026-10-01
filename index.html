@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MMI Town — Le serveur Minecraft des étudiants MMI de Béziers</title>
+<meta name="description" content="MMI Town V2 : SMP avec métiers et quêtes quotidiennes, Loup-Garou de Thiercelieux et Battle Box 3v3. Ouvert aux comptes premium et non premium.">
+<meta property="og:title" content="MMI Town">
+<meta property="og:description" content="SMP et métiers, Loup-Garou, Battle Box 3v3. Rejoins-nous sur mmitown.xyz">
+<meta property="og:image" content="assets/cover.png">
+<meta name="theme-color" content="#0a0812">
+<link rel="icon" href="assets/icon.png">
+<link rel="preload" href="assets/fonts/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="#top" aria-label="MMI Town, accueil">
+    <img src="assets/icon.png" alt="" width="32" height="32">
+    <span class="wordmark">MMI<b>TOWN</b></span>
+  </a>
+  <nav class="links" aria-label="Navigation principale">
+    <a href="#modes">Modes</a>
+    <a href="#metiers">Métiers</a>
+    <a href="#rejoindre">Rejoindre</a>
+  </nav>
+  <div class="nav-right">
+    <span class="online" data-state="loading"><i class="dot"></i><span data-online>chargement</span></span>
+    <button class="btn btn-sm" type="button" data-copy="mmitown.xyz">Copier l'IP</button>
+  </div>
+</header>
+
+<main id="top">
+<!-- COVER : calques de l'image, le titre apparait en fondu puis les boutons des modes -->
+<section class="cover" aria-label="MMI Town">
+  <div class="scene">
+    <img class="layer bg pixelated" src="assets/cover-bg.png" alt="" width="1920" height="1080" fetchpriority="high">
+    <canvas class="layer sky pixelated" id="sky" width="480" height="270" aria-hidden="true"></canvas>
+    <h1 class="title-wrap">
+      <img class="layer title pixelated" src="assets/cover-title.png" alt="MMI Town" width="1920" height="1080">
+    </h1>
+    <nav class="modes-nav" aria-label="Modes de jeu">
+      <a class="mode m-lg" href="#loup-garou" style="--rx:6.2%/21.5%"><img src="assets/chip-loup-garou.png" alt="Loup-Garou" width="323" height="93"></a>
+      <a class="mode m-pvp" href="#pvp-box" style="--rx:6.2%/21.5%"><img src="assets/chip-pvp-box.png" alt="3v3 PvP Box" width="325" height="93"></a>
+      <a class="mode m-smp" href="#smp" style="--rx:10.1%/21.5%"><img src="assets/chip-smp.png" alt="SMP" width="198" height="93"></a>
+    </nav>
+  </div>
+</section>
+
+<nav class="modes-mobile" aria-label="Modes de jeu">
+  <a class="mode" href="#loup-garou" style="--rx:6.2%/21.5%"><img src="assets/chip-loup-garou.png" alt="Loup-Garou" width="323" height="93"></a>
+  <a class="mode" href="#pvp-box" style="--rx:6.2%/21.5%"><img src="assets/chip-pvp-box.png" alt="3v3 PvP Box" width="325" height="93"></a>
+  <a class="mode" href="#smp" style="--rx:10.1%/21.5%"><img src="assets/chip-smp.png" alt="SMP" width="198" height="93"></a>
+</nav>
+
+<!-- BANDEAU IP -->
+<section class="wrap strip">
+  <p class="strip-text">Le serveur Minecraft des étudiants MMI de Béziers. Ouvert aux comptes premium et non premium.</p>
+  <div class="strip-ip">
+    <div class="ip-box" data-copy="mmitown.xyz" role="button" tabindex="0" aria-label="Copier l'adresse du serveur">
+      <span class="ip-label">IP</span>
+      <code>mmitown.xyz</code>
+      <span class="ip-action" data-copy-label>COPIER</span>
+    </div>
+    <ul class="strip-meta">
+      <li class="online" data-state="loading"><i class="dot"></i><span data-online>chargement</span></li>
+      <li>Minecraft 26.3</li>
+    </ul>
+  </div>
+  <p class="copy-error" data-copy-error hidden>Copie impossible : sélectionne l'adresse et copie-la à la main.</p>
+</section>
+
+<!-- MODES -->
+<section class="wrap section" id="modes">
+  <header class="section-head reveal">
+    <p class="tag">&gt; modes.list</p>
+    <h2>Trois façons de jouer</h2>
+    <p class="muted">Un lobby central, trois mondes séparés avec leurs propres inventaires. On choisit son mode par les portails ou avec la boussole.</p>
+  </header>
+
+  <article class="feature reveal" id="smp" style="--c:#F7941D">
+    <div class="feature-art"><img class="pixelated" src="assets/smp-metiers.png" alt="SMP : paysage de survie avec les cinq métiers" loading="lazy" width="1920" height="1080"></div>
+    <div class="feature-body">
+      <span class="chip">SMP</span>
+      <h3>Survie et métiers</h3>
+      <p>Le cœur historique de MMI Town : un monde de survie vanilla et persistant pour explorer, bâtir et coopérer. Choisis tes métiers, monte en niveau et relève les quêtes du jour.</p>
+      <ul class="ticks">
+        <li>5 métiers évolutifs jusqu'au niveau 50</li>
+        <li>Quêtes quotidiennes avec bonus de fin de journée</li>
+        <li><code>/sethome</code>, <code>/home</code> et <code>/tpa</code> pour rejoindre un ami</li>
+        <li>Inventaire dédié, séparé du reste du serveur</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="feature flip reveal" id="loup-garou" style="--c:#E8412C">
+    <div class="feature-art"><img class="pixelated" src="assets/loup-garou.png" alt="Loup-Garou : village médiéval sous la pleine lune" loading="lazy" width="1920" height="1080"></div>
+    <div class="feature-body">
+      <span class="chip">LOUP-GAROU</span>
+      <h3>Thiercelieux en immersion</h3>
+      <p>Le jeu de société, adapté fidèlement : les joueurs sont assis en cercle autour du feu. La nuit, chaque rôle se réveille et agit d'un clic. Le jour, le village débat puis vote.</p>
+      <ul class="ticks">
+        <li>Voyante, Sorcière, Cupidon, Chasseur et d'autres rôles</li>
+        <li>Cycle jour/nuit avec ambiance sonore</li>
+        <li>Vote secret, bûcher au petit matin</li>
+        <li>Interface d'hôte pour régler la partie</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="feature reveal" id="pvp-box" style="--c:#4A9FD8">
+    <div class="feature-art"><img class="pixelated" src="assets/pvp-box.png" alt="3v3 PvP Box : arène fermée" loading="lazy" width="1920" height="1080"></div>
+    <div class="feature-body">
+      <span class="chip">3V3 PVP BOX</span>
+      <h3>Battle Box tactique</h3>
+      <p>Deux équipes de trois dans une arène fermée, trois manches gagnantes. On gagne une manche en capturant le centre avec la laine de son équipe, ou en éliminant tout le monde en face.</p>
+      <ul class="ticks">
+        <li>Matchs en 3 manches avec kits tactiques</li>
+        <li>Capture du centre ou élimination</li>
+        <li>Mode spectateur pour suivre les matchs</li>
+        <li>Statistiques et classements dans le lobby</li>
+      </ul>
+    </div>
+  </article>
+</section>
+
+<!-- METIERS -->
+<section class="wrap section" id="metiers">
+  <header class="section-head reveal">
+    <p class="tag">&gt; jobs.smp</p>
+    <h2>Cinq métiers à choisir</h2>
+    <p class="muted">Deux métiers actifs à la fois. Survole ou clique une case pour voir ce qu'il rapporte.</p>
+  </header>
+
+  <div class="hotbar reveal" role="tablist" aria-label="Métiers du SMP" id="hotbar">
+    <button class="slot" role="tab" type="button" data-job="mineur" style="--c:#9FB4C7"><span class="num">1</span><svg class="px" data-px="pickaxe" aria-hidden="true"></svg><span class="slot-name">Mineur</span></button>
+    <button class="slot" role="tab" type="button" data-job="bucheron" style="--c:#C08A52"><span class="num">2</span><svg class="px" data-px="axe" aria-hidden="true"></svg><span class="slot-name">Bûcheron</span></button>
+    <button class="slot" role="tab" type="button" data-job="fermier" style="--c:#E6C35C"><span class="num">3</span><svg class="px" data-px="wheat" aria-hidden="true"></svg><span class="slot-name">Fermier</span></button>
+    <button class="slot" role="tab" type="button" data-job="chasseur" style="--c:#E8412C"><span class="num">4</span><svg class="px" data-px="sword" aria-hidden="true"></svg><span class="slot-name">Chasseur</span></button>
+    <button class="slot" role="tab" type="button" data-job="pecheur" style="--c:#4A9FD8"><span class="num">5</span><svg class="px" data-px="fish" aria-hidden="true"></svg><span class="slot-name">Pêcheur</span></button>
+  </div>
+  <div class="job-panel" id="job-panel" role="tabpanel" aria-live="polite"></div>
+
+  <div class="quests reveal">
+    <div class="quests-head">
+      <div>
+        <p class="tag">&gt; /quetes</p>
+        <h3>Quêtes quotidiennes</h3>
+      </div>
+      <span class="timer" title="Renouvellement à minuit">Prochaines quêtes dans <b id="reset-timer">--:--:--</b></span>
+    </div>
+    <p class="muted quests-intro">Exemple pour un mineur. Trois quêtes par métier actif, tirées au hasard chaque jour.</p>
+    <ul class="quest-rows">
+      <li class="quest done">
+        <span class="q-tier">FACILE</span>
+        <span class="q-text"><svg class="px sm" data-px="check" aria-hidden="true"></svg>Miner 16 minerais de charbon</span>
+        <span class="bar" role="img" aria-label="16 sur 16"><i style="width:100%"></i></span>
+        <span class="q-meta">16/16 · 2 émeraudes</span>
+      </li>
+      <li class="quest">
+        <span class="q-tier">MOYENNE</span>
+        <span class="q-text">Miner 12 minerais de fer</span>
+        <span class="bar" role="img" aria-label="7 sur 12"><i style="width:58%" data-grow></i></span>
+        <span class="q-meta">7/12 · 4 émeraudes</span>
+      </li>
+      <li class="quest">
+        <span class="q-tier hard">DIFFICILE</span>
+        <span class="q-text">Miner 4 diamants</span>
+        <span class="bar" role="img" aria-label="1 sur 4"><i style="width:25%" data-grow></i></span>
+        <span class="q-meta">1/4 · 7 émeraudes</span>
+      </li>
+      <li class="quest bonus">
+        <span class="q-tier gold">BONUS</span>
+        <span class="q-text">Termine les 3 quêtes du métier</span>
+        <span class="q-reward"><i class="gem dia"></i>1 diamant <i class="gem eme"></i>3 émeraudes</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- REJOINDRE -->
+<section class="wrap section join" id="rejoindre">
+  <header class="section-head reveal">
+    <p class="tag">&gt; join.server</p>
+    <h2>Rejoins MMI Town</h2>
+    <p class="muted">Ajoute le serveur dans ta liste Minecraft et rejoins-nous.</p>
+  </header>
+
+  <div class="join-grid">
+    <div class="reveal">
+      <!-- Maquette de la liste des serveurs de Minecraft -->
+      <div class="mc-list" aria-label="Aperçu du serveur dans Minecraft">
+        <div class="mc-title">Jouer en multijoueur</div>
+        <div class="mc-entry">
+          <img src="assets/icon.png" alt="" width="64" height="64">
+          <div class="mc-info">
+            <div class="mc-top">
+              <b>MMI Town</b>
+              <span class="mc-count" data-players>—</span>
+              <span class="mc-ping" data-ping aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+            </div>
+            <div class="mc-motd"><span class="c-pink">SMP</span> <em>·</em> <span class="c-red">Loup-Garou</span> <em>·</em> <span class="c-blue">3v3 PvP Box</span></div>
+            <div class="mc-motd muted">Le serveur des étudiants MMI de Béziers</div>
+          </div>
+        </div>
+        <div class="mc-bar">
+          <div class="mc-field" aria-label="Adresse du serveur"><span>Adresse</span><code>mmitown.xyz</code></div>
+          <button class="mc-btn" type="button" data-copy="mmitown.xyz" data-copy-label>Copier l'adresse</button>
+        </div>
+        <p class="copy-error" data-copy-error hidden>Copie impossible : sélectionne l'adresse et copie-la à la main.</p>
+      </div>
+      <a class="btn btn-big join-discord" id="discord-btn" href="#" hidden>Rejoindre le Discord</a>
+    </div>
+
+    <ol class="path">
+      <li class="reveal"><span class="node">1</span><div><h4>Lance Minecraft 26.3</h4><p>Java Edition. Comptes premium et non premium acceptés.</p></div></li>
+      <li class="reveal"><span class="node">2</span><div><h4>Ajoute le serveur</h4><p>Multijoueur, Ajouter un serveur, puis colle <code>mmitown.xyz</code>.</p></div></li>
+      <li class="reveal"><span class="node">3</span><div><h4>Crée ton compte</h4><p>Dans le chat :</p><p class="cmd">&gt; /register &lt;motdepasse&gt; &lt;confirmation&gt;</p></div></li>
+      <li class="reveal"><span class="node">4</span><div><h4>Choisis ton mode</h4><p>Traverse un portail du lobby ou ouvre la boussole.</p></div></li>
+    </ol>
+  </div>
+</section>
+</main>
+
+<div class="skyline" aria-hidden="true"></div>
+
+<footer class="footer">
+  <div class="wrap foot">
+    <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="28" height="28"><span class="wordmark">MMI<b>TOWN</b></span></a>
+    <p class="muted">Serveur communautaire des étudiants MMI de l'IUT de Béziers. Projet non affilié à Mojang ni à Microsoft.</p>
+    <nav class="foot-links" aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="cookies.html">Cookies</a></nav>
+    <p class="muted small">mmitown.xyz · Minecraft 26.3 · V2</p>
+  </div>
+</footer>
+
+<script src="assets/cover-sky.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
