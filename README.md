@@ -1,6 +1,6 @@
 # MMI Town — site web
 
-Site de présentation de MMI Town, le serveur Minecraft des étudiants MMI de l'IUT de Béziers.
+Site de présentation de MMI Town, un petit serveur Minecraft.
 
 Site statique (HTML, CSS, JS), sans build ni dépendance. Polices auto-hébergées, aucun cookie.
 
