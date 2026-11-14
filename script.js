@@ -282,7 +282,7 @@
     panel.innerHTML = `
       <div class="job-body">
         <div>
-          <div class="job-head"><img class="px" src="${job.icon}" alt="" width="64" height="64"><div><h3>${job.name}</h3><small>Niveau max 50</small></div></div>
+          <div class="job-head"><img class="px" src="${job.icon}" alt="" width="256" height="256"><div><h3>${job.name}</h3><small>Niveau max 50</small></div></div>
           <p class="job-desc">${job.desc}</p>
           <div class="job-block"><h5>GAGNER DE L'XP</h5>${list(job.xp)}</div>
           <div class="job-block"><h5>BONUS</h5>${list([`${job.perk} : 0,5 % par niveau, 25 % au niveau 50`])}</div>
