@@ -8,27 +8,6 @@
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  // --- Pictogrammes pixel (10x10) : '#' = couleur, 'o' = reflet ---
-  const ICONS = {
-    check: ['..........', '..........', '.........#', '........##', '#......##.', '.#....##..', '..#..##...', '...###....', '....#.....', '..........'],
-  };
-  function renderIcons(root) {
-    root.querySelectorAll('[data-px]').forEach((svg) => {
-      const rows = ICONS[svg.dataset.px];
-      if (!rows || svg.childElementCount) return;
-      svg.setAttribute('viewBox', '0 0 10 10');
-      let out = '';
-      rows.forEach((row, y) => {
-        [...row].forEach((ch, x) => {
-          if (ch === '#') out += `<rect x="${x}" y="${y}" width="1" height="1" fill="currentColor"/>`;
-          else if (ch === 'o') out += `<rect x="${x}" y="${y}" width="1" height="1" fill="currentColor"/><rect x="${x}" y="${y}" width="1" height="1" fill="#fff" fill-opacity=".4"/>`;
-        });
-      });
-      svg.innerHTML = out;
-    });
-  }
-  renderIcons(document);
-
   // --- Ciel de la cover : etoiles qui scintillent, eclats, fenetres qui s'allument et s'eteignent ---
   const skyCanvas = document.getElementById('sky');
   const SKY = window.COVER_SKY;
