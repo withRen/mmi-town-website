@@ -8,13 +8,8 @@
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  // --- Pictogrammes pixel (10x10) : '#' = couleur du metier, 'o' = reflet ---
+  // --- Pictogrammes pixel (10x10) : '#' = couleur, 'o' = reflet ---
   const ICONS = {
-    pickaxe: ['..######..', '.#..oo..#.', '#...oo...#', '....oo....', '....oo....', '....oo....', '....oo....', '....oo....', '....oo....', '..........'],
-    axe: ['....####..', '...######.', '...######.', '....####o.', '.......o..', '......o...', '.....o....', '....o.....', '...o......', '..........'],
-    wheat: ['....#.....', '...###....', '..#.#.#...', '...###....', '..#.#.#...', '...###....', '....o.....', '....o.....', '....o.....', '....o.....'],
-    sword: ['........##', '.......#o#', '......#o#.', '.....#o#..', '....#o#...', '#..#o#....', '.##o#.....', '..##......', '.#.##.....', '#.........'],
-    fish: ['..........', '..........', '..####...#', '.######.##', '#o######.#', '.######.##', '..####...#', '..........', '..........', '..........'],
     check: ['..........', '..........', '.........#', '........##', '#......##.', '.#....##..', '..#..##...', '...###....', '....#.....', '..........'],
   };
   function renderIcons(root) {
@@ -228,21 +223,21 @@
   // --- Metiers : hotbar + panneau d'infos (survol, clic, clavier) ---
   const JOBS = {
     mineur: {
-      name: 'Mineur', icon: 'pickaxe', color: '#9FB4C7',
+      name: 'Mineur', icon: 'assets/items/iron_pickaxe.png', color: '#9FB4C7',
       desc: 'Creuse les profondeurs à la recherche de minerais.',
       xp: ['Minerais : charbon, fer, or, diamant…', 'Plus le minerai est rare, plus il rapporte', 'Débris antiques : le meilleur gain'],
       perk: 'Chance de doubler les minerais',
       steps: [[10, '8 lanternes'], [20, '2 diamants'], [30, 'Pioche en diamant Efficacité III'], [40, '5 diamants'], [50, 'Lingot de netherite']],
     },
     bucheron: {
-      name: 'Bûcheron', icon: 'axe', color: '#C08A52',
+      name: 'Bûcheron', icon: 'assets/items/iron_axe.png', color: '#C08A52',
       desc: 'Abat les arbres de toutes les forêts du monde.',
       xp: ['Bûches de tous les arbres', 'Tiges du Nether'],
       perk: 'Chance de doubler les bûches',
       steps: [[10, '8 pommes'], [20, '2 pommes dorées'], [30, 'Hache en diamant Efficacité III'], [40, '4 pommes dorées'], [50, 'Pomme dorée enchantée']],
     },
     fermier: {
-      name: 'Fermier', icon: 'wheat', color: '#E6C35C',
+      name: 'Fermier', icon: 'assets/items/wheat.png', color: '#E6C35C',
       desc: 'Cultive les champs et élève les animaux.',
       xp: ['Récoltes arrivées à maturité', 'Faire se reproduire des animaux'],
       perk: 'Chance de doubler les récoltes',
@@ -250,14 +245,14 @@
       steps: [[10, '32 poudres d\'os'], [20, '16 carottes dorées'], [30, 'Houe en diamant Fortune II'], [40, '32 carottes dorées'], [50, 'Œuf de renifleur']],
     },
     chasseur: {
-      name: 'Chasseur', icon: 'sword', color: '#E8412C',
+      name: 'Chasseur', icon: 'assets/items/iron_sword.png', color: '#E8412C',
       desc: 'Protège le monde des créatures de la nuit.',
       xp: ['Tuer des monstres hostiles', 'Les boss rapportent énormément'],
       perk: 'Chance de doubler le butin et l\'XP',
       steps: [[10, '32 flèches'], [20, 'Arc Puissance III'], [30, 'Épée en diamant Tranchant III'], [40, 'Totem d\'immortalité'], [50, 'Lingot de netherite']],
     },
     pecheur: {
-      name: 'Pêcheur', icon: 'fish', color: '#4A9FD8',
+      name: 'Pêcheur', icon: 'assets/items/fishing_rod.png', color: '#4A9FD8',
       desc: 'Patient, il tire des eaux poissons et trésors.',
       xp: ['Poissons pêchés', 'Trésors : livres, selles…'],
       perk: 'Chance d\'une prise supplémentaire',
@@ -270,13 +265,6 @@
   const panel = document.getElementById('job-panel');
   const slots = [...hotbar.querySelectorAll('.slot')];
 
-  function iconSvg(name) {
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('class', 'px');
-    svg.setAttribute('aria-hidden', 'true');
-    svg.dataset.px = name;
-    return svg;
-  }
   let currentJob = '';
   function selectJob(id, focus) {
     const job = JOBS[id];
@@ -294,7 +282,7 @@
     panel.innerHTML = `
       <div class="job-body">
         <div>
-          <div class="job-head"><span data-slot-icon></span><div><h3>${job.name}</h3><small>Niveau max 50</small></div></div>
+          <div class="job-head"><img class="px" src="${job.icon}" alt="" width="64" height="64"><div><h3>${job.name}</h3><small>Niveau max 50</small></div></div>
           <p class="job-desc">${job.desc}</p>
           <div class="job-block"><h5>GAGNER DE L'XP</h5>${list(job.xp)}</div>
           <div class="job-block"><h5>BONUS</h5>${list([`${job.perk} : 0,5 % par niveau, 25 % au niveau 50`])}</div>
@@ -306,10 +294,6 @@
           <p class="job-note">Des émeraudes à chaque niveau. ${RANKS}.</p>
         </div>
       </div>`;
-    const holder = panel.querySelector('[data-slot-icon]');
-    const svg = iconSvg(job.icon);
-    holder.replaceWith(svg);
-    renderIcons(svg.parentElement);
   }
   slots.forEach((slot) => {
     slot.addEventListener('click', () => selectJob(slot.dataset.job));

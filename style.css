@@ -209,7 +209,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
   box-shadow: inset 0 0 0 2px #1d1b2b;
   transition: transform .35s var(--ease), border-color .25s, box-shadow .35s var(--ease), color .25s;
 }
-.slot .px { color: var(--c); width: 56%; height: auto; max-width: 96px; filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, .45)); transition: transform .35s var(--ease); }
+.slot .px { width: 56%; height: auto; max-width: 80px; aspect-ratio: 1; object-fit: contain; image-rendering: pixelated; filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, .45)); transition: transform .35s var(--ease); }
 .slot-name { font: 400 clamp(20px, 2.4vw, 30px)/1 var(--title); letter-spacing: .04em; }
 .num { position: absolute; top: 8px; left: 10px; font: 700 10px var(--mono); text-transform: uppercase; color: #5d5b78; }
 .slot:hover { transform: translateY(-4px); color: var(--text); }
@@ -231,7 +231,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .job-body { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 0 48px; padding: 32px; animation: panel-in .45s var(--ease); }
 @keyframes panel-in { from { opacity: 0; transform: translateY(8px); } }
 .job-head { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
-.job-head .px { width: 64px; height: 64px; color: var(--c); filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, .45)); }
+.job-head .px { width: 64px; height: 64px; object-fit: contain; image-rendering: pixelated; filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, .45)); flex: none; }
 .job-head h3 { font-size: clamp(40px, 4.4vw, 60px); }
 .job-head small { display: block; color: var(--c); font-size: 12px; margin-top: 6px; }
 .job-desc { margin-bottom: 22px; }
@@ -269,9 +269,8 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .bar { height: 10px; background: rgba(0, 0, 0, .35); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .05); }
 .bar i { display: block; height: 100%; background: repeating-linear-gradient(90deg, var(--accent) 0 8px, #c3730f 8px 10px); transition: width 1.2s steps(14); }
 .quest.done .bar i { background: repeating-linear-gradient(90deg, var(--green) 0 8px, #3ba566 8px 10px); }
-.gem { display: inline-block; width: 14px; height: 14px; }
-.gem.dia { background: #4de2e8; clip-path: polygon(50% 0, 100% 40%, 50% 100%, 0 40%); }
-.gem.eme { background: var(--green); clip-path: polygon(50% 0, 100% 35%, 85% 100%, 15% 100%, 0 35%); margin-left: 6px; }
+.gem { display: inline-block; width: 18px; height: 18px; image-rendering: pixelated; vertical-align: -3px; }
+.gem.eme { margin-left: 6px; }
 
 /* ---------- REJOINDRE ---------- */
 .join-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: start; }
